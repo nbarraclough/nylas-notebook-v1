@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Successful</title>
+</head>
+<body>
+    <h1>Authentication Successful</h1>
+    <p>You can close this window now.</p>
+    <script>
+        async function handleCallback() {
+            console.log('Auth callback initiated')
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            if (code) {
+                console.log('Authorization code received')
+                try {
+                    console.log('Sending code to server for token exchange')
+                    const response = await fetch('/api/nylas-auth-callback?code=' + code);
+                    const data = await response.json();
+                    if (data.success && data.grantId) {
+                        console.log('Token exchange successful. Grant ID received:', data.grantId)
+                        window.opener.postMessage({ type: 'NYLAS_AUTH_SUCCESS', grantId: data.grantId }, window.location.origin);
+                    } else {
+                        console.error('Authentication failed:', data.error)
+                        window.opener.postMessage({ type: 'NYLAS_AUTH_ERROR', error: data.error }, window.location.origin);
+                    }
+                } catch (error) {
+                    console.error('Error during authentication:', error)
+                    window.opener.postMessage({ type: 'NYLAS_AUTH_ERROR', error: 'Authentication failed' }, window.location.origin);
+                }
+            } else {
+                console.error('No authorization code received')
+                window.opener.postMessage({ type: 'NYLAS_AUTH_ERROR', error: 'No authorization code received' }, window.location.origin);
+            }
+            console.log('Closing auth window')
+            window.close();
+        }
+        handleCallback();
+    </script>
+</body>
+</html>
+
