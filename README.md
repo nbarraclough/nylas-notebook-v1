@@ -33,4 +33,4 @@ You can either look at the source code, or... click the Console button on the to
 -- This is because waiting for events is annoying & sometimes you just need to show off the Notetaker!
 -- Provide either the URL for the meeting, or the entire 'Meeting Info' from the UI of Google Meets. The URL will get parsed from that anyway.
 
-- You can rename Notetaker by changing the "Notetaker Name" field. It defaults to "Nylas Notetaker", which is what we called our Gong bot.
+- You can rename Notetaker by changing the "Notetaker Name" field. It defaults to "Nylas Notetaker" if you don't change the name. We like that name.
