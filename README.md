@@ -1,6 +1,9 @@
-# nylas-notetaker-simple-ui
+# nylas-notebook-v1
 
-A very simple stateless app to demonstrate our Notetaker API. Uses Nylas Hosted Auth, Nylas Calendar API, Nylas Notetaker API. This was built through prompting v0.dev one night because I were sad that we weren't getting a lot of internal adoption for testing the Notetaker on Staging.
+A very simple stateless app to demonstrate our Notetaker API. Uses Nylas Hosted Auth, Nylas Calendar API, and the Nylas Notetaker API.
+
+![CleanShot 2025-05-06 at 10 03 30@2x](https://github.com/user-attachments/assets/69d7d42a-7e9e-4ca4-ab60-1741af2dca0c)
+
 
 # Why does this exist?
 
